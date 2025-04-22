@@ -1,0 +1,80 @@
+# -------------------------
+# Global (applies to all)
+# -------------------------
+
+# OS files
+.DS_Store
+Thumbs.db
+
+# IDE/editor
+.vscode/
+.idea/
+*.swp
+*.swo
+
+# Environment & secrets
+.env
+*.env
+
+# Logs
+*.log
+logs/
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+
+# -------------------------
+# Node / React (frontend/)
+# -------------------------
+
+frontend/node_modules/
+frontend/dist/
+frontend/build/
+frontend/.next/
+frontend/.cache/
+frontend/.turbo/
+
+# React testing
+frontend/coverage/
+
+# -------------------------
+# Python / Django (backend/)
+# -------------------------
+
+.venv
+# Python cache
+backend/__pycache__/
+backend/**/*.pyc
+
+# Django
+backend/db.sqlite3
+backend/media/
+backend/staticfiles/
+backend/static/
+backend/*.sqlite3
+backend/.pytest_cache/
+backend/.mypy_cache/
+
+# Python environment
+backend/venv/
+backend/env/
+backend/.venv/
+backend/.env
+
+# Pipenv
+backend/Pipfile.lock
+
+# -------------------------
+# Docker / Compose
+# -------------------------
+
+docker-compose.override.yml
+*.pid
+*.sock
+
+# -------------------------
+# Optional: OS-level files
+# -------------------------
+
+*.bak
+*.tmp
