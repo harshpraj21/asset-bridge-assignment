@@ -95,42 +95,46 @@ const BookList = () => {
       ) : (
         <div className="p-6 max-w-5xl mx-auto">
           <div className="flex gap-4 mb-6">
-            <div className="w-64">
-              <Select
-                options={authors.map((author) => ({
-                  value: author,
-                  label: author,
-                }))}
-                value={
-                  selectedAuthor
-                    ? { value: selectedAuthor, label: selectedAuthor }
-                    : null
-                }
-                onChange={(selected) =>
-                  setSelectedAuthor(selected ? selected.value : "")
-                }
-                placeholder="Select Author"
-                isClearable
-              />
-            </div>
-            <div className="w-64">
-              <Select
-                options={genres.map((genre) => ({
-                  value: genre,
-                  label: genre,
-                }))}
-                value={
-                  selectedGenre
-                    ? { value: selectedGenre, label: selectedGenre }
-                    : null
-                }
-                onChange={(selected) =>
-                  setSelectedGenre(selected ? selected.value : "")
-                }
-                placeholder="Select Genre"
-                isClearable
-              />
-            </div>
+            {authors && (
+              <div className="w-64">
+                <Select
+                  options={authors.map((author) => ({
+                    value: author,
+                    label: author,
+                  }))}
+                  value={
+                    selectedAuthor
+                      ? { value: selectedAuthor, label: selectedAuthor }
+                      : null
+                  }
+                  onChange={(selected) =>
+                    setSelectedAuthor(selected ? selected.value : "")
+                  }
+                  placeholder="Select Author"
+                  isClearable
+                />
+              </div>
+            )}
+            {genres && (
+              <div className="w-64">
+                <Select
+                  options={genres.map((genre) => ({
+                    value: genre,
+                    label: genre,
+                  }))}
+                  value={
+                    selectedGenre
+                      ? { value: selectedGenre, label: selectedGenre }
+                      : null
+                  }
+                  onChange={(selected) =>
+                    setSelectedGenre(selected ? selected.value : "")
+                  }
+                  placeholder="Select Genre"
+                  isClearable
+                />
+              </div>
+            )}
           </div>
 
           <div className="grid md:grid-cols-2 gap-6">
