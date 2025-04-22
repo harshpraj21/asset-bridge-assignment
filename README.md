@@ -19,7 +19,7 @@ docker-compose --version
 ### 2. Clone the Repository
 
 ```bash
-git clone https://github.com/yourusername/book-review-assignment.git
+git clone https://github.com/harshpraj21/asset-bridge-assignment.git
 cd book-review-assignment
 ```
 
