@@ -4,13 +4,16 @@ import axios from "axios";
 import { API } from "../utils/api";
 import { useDispatch } from "react-redux";
 import { login, setUser } from "../slices/authSlice";
+import { useState } from "react";
+import { capitalizeFirstLetter } from "../utils/utils";
 
 const AuthPage = () => {
   const location = useLocation();
   const isLogin = location.pathname === "/login";
   const dispatch = useDispatch();
   const navigate = useNavigate();
-  
+
+  const [errorMessage, setErrorMessage] = useState("");
 
   const {
     register,
@@ -34,8 +37,16 @@ const AuthPage = () => {
 
       navigate("/");
     } catch (err) {
-      console.log(err);
-      // setError("Authentication failed. Please check your credentials.");
+      setErrorMessage("Authentication failed. Please check your credentials.");
+
+      if (err.response?.data) {
+        const data = err.response.data;
+        if (data.email && Array.isArray(data.email)) {
+          setErrorMessage(data.email[0]);
+        } else if (typeof data.detail === "string") {
+          setErrorMessage(data.detail);
+        }
+      }
     }
   };
 
@@ -84,10 +95,15 @@ const AuthPage = () => {
               <span className="text-red-500 text-xs">Password is required</span>
             )}
           </div>
+          {errorMessage && (
+            <span className="text-red-500">
+              {capitalizeFirstLetter(errorMessage)}
+            </span>
+          )}
           <button
             type="submit"
             disabled={isSubmitting}
-            className="w-full bg-blue-600 text-white py-2 rounded hover:bg-blue-700"
+            className="w-full bg-blue-600 text-white py-2 my-2 rounded hover:bg-blue-700"
           >
             {isLogin ? "Login" : "Register"}
           </button>

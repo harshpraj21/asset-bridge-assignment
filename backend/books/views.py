@@ -12,7 +12,7 @@ from core.permissions_utils import IsAuthorOrReadonly
 
 class BookViewSet(viewsets.ModelViewSet):
     serializer_class = BookSerializer
-    queryset = Book.objects.all()
+    queryset = Book.objects.all().order_by('-updated_at')
     authentication_classes = [TokenAuthentication]
     permission_classes = [IsAuthenticatedOrReadOnly, IsAuthorOrReadonly]
     filter_backends = [DjangoFilterBackend]

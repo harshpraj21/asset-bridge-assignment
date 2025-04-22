@@ -16,6 +16,12 @@ class UserSerializer(serializers.ModelSerializer):
         """Create and return a user with encrypted password."""
         return get_user_model().objects.create_user(**validated_data)
 
+    def validate_email(self, value):
+        """Check if email already exists."""
+        if get_user_model().objects.filter(email=value).exists():
+            raise serializers.ValidationError("Email already exists.")
+        return value
+
     def update(self, instance, validated_data):
         """Update and return user."""
         password = validated_data.pop('password', None)

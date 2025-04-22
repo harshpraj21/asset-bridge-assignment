@@ -56,8 +56,8 @@ const BookList = () => {
           getAuthors(),
           getGenres(),
         ]);
-        setAuthors(authorRes.data);
-        setGenres(genreRes.data);
+        setAuthors(authorRes.data ?? []);
+        setGenres(genreRes.data ?? []);
       } catch (err) {
         console.error("Error fetching filters:", err);
       }
